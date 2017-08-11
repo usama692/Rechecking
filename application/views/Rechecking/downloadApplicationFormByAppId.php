@@ -39,6 +39,21 @@
 </style>
 
 <?php
+//DebugBreak();
+
+@$mysg = @$error['noRecordFound'];
+if(@$mysg != "")
+{
+    ?>
+    <div class="alert alert-danger fade in alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+        <strong><?php echo $mysg ?></strong>
+    </div>
+    <?php
+}
+?>
+
+<?php
 if(SESS == 1){ @$sess = 'Annual';}else if(SESS == 2){ @$sess = 'Supply';}
 ?>
 
@@ -64,26 +79,29 @@ if(strtotime(date("d-m-Y")) <= strtotime(LASTDATE))
     <?php
 }    
 ?>
-
 <div id="hidDivForPrint">
     <form enctype="multipart/form-data" id="recheckingStatus" name="recheckingStatus" method="post" action="<?php echo base_url(); ?>index.php/Rechecking/recheckingStatus">
         <h3 class="bold"><strong>Rechecking Status</strong></h3>  
         <div class="form-group">
             <label for="appId">Application ID / Roll No:</label>
-            <input type="text" class="form-control" id="appId" name="appId" value="<?php echo @$_POST['appId']; ?>" placeholder="Enter Application ID / Roll No" required="required">
+            <input type="text" class="form-control" id="appId" name="appId" value="<?php @$app = @$_POST['appId']; if ($app != '') echo $app; else echo $app = $this->uri->segment(3);  ?>" placeholder="Enter Application ID / Roll No" required="required">
+            <label for="stClass">Select Class:</label>
+            <select id="stClass" name="stClass" required  class="form-control">
+                <option value='9' <?php if(CLS == 9){echo " selected";} ?>>9th</option>
+                <option value='10' <?php if(CLS == 10){echo " selected";} ?>>10th</option>
+                <option value='11' <?php if(CLS == 11){echo " selected";} ?>>11th</option>
+                <option value='12' <?php if(CLS == 12){echo " selected";} ?>>12th</option>
+            </select>
         </div>
-
         <?php
         if(@$data != false)
         {
             ?>
             <div class="row">
-
                 <?php
                 if(strtotime(date("d-m-Y")) > strtotime(LASTDATE)) 
                 {
                     ?>
-
                     <div class="col-md-12">
                         <button type="submit" id="chkStatus" name="chkStatus" class="btn btn-primary btn-block" onclick="return chkRechecking(this);">Check Status</button>
                     </div>

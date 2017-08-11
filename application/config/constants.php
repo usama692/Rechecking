@@ -1,10 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-define('CLS', 10);
+define('CLS', 9);
 define('YEAR', '2017');
 define('SESS', 1);
 define('SESSNAME', 'SSC');
-define('LASTDATE', '09-08-2017');
+define('LASTDATE', '09-09-2017');
 
 

@@ -204,7 +204,7 @@
         <h4 class="bold">Exam Information</h4>
 
         <div class="form-group">
-            <label for="matRno">Matric Roll No:</label>
+            <label for="matRno">Matric <?php echo '('.CLS.'TH)' ?>  Roll No:</label>
             <input type="text" class="form-control" id="matRno" name="matRno" value="<?php echo @$error['data']['matRno'] ?>">
         </div>
 

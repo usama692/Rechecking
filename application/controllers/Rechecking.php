@@ -345,11 +345,13 @@ class Rechecking extends CI_Controller {
         {
             $info['error'] = 1;
             $info['AppID'] = $val[0]['app_id'];
+            $info['stClass'] = $val[0]['class'];
         }
         else if($val == false)
         {
             $info['error'] = 'error';
             $info['AppID'] = '';
+            $info['stClass'] = '';
         }
 
         if($info['error'] == 1)
@@ -375,7 +377,7 @@ class Rechecking extends CI_Controller {
             {
                 $MobNo = '92' . substr($MobNo, 1);
                 $MobNo = str_replace('-','',$MobNo);
-                $this->sendSms($MobNo, $candidateSmsString);
+                //$this->sendSms($MobNo, $candidateSmsString);
             }
         }
         echo  json_encode($info);
@@ -400,13 +402,18 @@ class Rechecking extends CI_Controller {
         $this->load->model('Rechecking_Model'); 
 
         @$appId = $_POST['appId'];
+        @$stClass = $_POST['stClass'];
 
         if($appId == '')
         {
             @$appId = $this->uri->segment(3);
         }
+        if($stClass == '')
+        {
+            @$stClass = $this->uri->segment(4);
+        }
 
-        $val = $this->Rechecking_Model->recheckingStatus_Model($appId);
+        $val = $this->Rechecking_Model->recheckingStatus_Model($appId, $stClass);
 
 
         if($val == -1)
@@ -418,13 +425,17 @@ class Rechecking extends CI_Controller {
             return;
         }
 
+        //DebugBreak();
+        
         if(!$val)
         {
-            $error_msg.='Record Not Found Against Your Criteria';
-            $this->load->library('session');
-            $mydata = array('data'=>$_POST,'error_msg'=>$error_msg);
-            $this->session->set_flashdata('error',$mydata );
-            redirect('Rechecking/index');
+            
+            $error['noRecordFound'] = 'Record Not Found Against Your Criteria';
+            $this->load->view('Rechecking/Header.php');
+            $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
+            $this->load->view('Rechecking/getInfo.php');
+            
+            $this->load->view('Rechecking/Footer.php'); 
         }
 
         else

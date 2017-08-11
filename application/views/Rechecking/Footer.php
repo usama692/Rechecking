@@ -153,7 +153,7 @@
                             var obj = JSON.parse(data);
                             if(obj.error ==  1)
                             {
-                                window.location.href ='<?php echo base_url(); ?>index.php/Rechecking/recheckingStatus/'+obj.AppID;
+                                window.location.href ='<?php echo base_url(); ?>index.php/Rechecking/recheckingStatus/'+obj.AppID+'/'+obj.stClass;
                                 alertify.error('Your Application is Submit Successfully');
                                 return true;
                             }   

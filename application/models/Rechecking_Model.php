@@ -175,11 +175,11 @@ class Rechecking_Model extends CI_Model
     }
 
 
-    function recheckingStatus_Model($appId)
+    function recheckingStatus_Model($appId, $stClass)
     {
         //DebugBreak();
 
-        @$CLS = CLS;
+        @$CLS = $stClass;
         @$YEAR = YEAR;
         @$SESS = SESS;
 
