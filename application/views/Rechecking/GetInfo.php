@@ -131,6 +131,7 @@
                 <option value='Malakwal - 1623' <?php if(@$error['data']['bName']=='Malakwal - 1623'){echo " selected";} ?>>Malakwal</option>
                 <option value='Head Faqerian - 1705' <?php if(@$error['data']['bName']=='Head Faqerian - 1705'){echo " selected";} ?>>Head Faqerian</option>
                 <option value='Phalia - 1989' <?php if(@$error['data']['bName']=='Phalia - 1989'){echo " selected";} ?>>Phalia</option>
+                <option value='PAHRIANWALI - 2351' <?php if(@$error['data']['bName']=='PAHRIANWALI - 2351'){echo " selected";} ?>>PAHRIANWALI</option>
             </optgroup>
             <optgroup label='NAROWAL'>
                 <option value='Shakargarh - 260' <?php if(@$error['data']['bName']=='Shakargarh - 260'){echo " selected";} ?>>Shakargarh</option>

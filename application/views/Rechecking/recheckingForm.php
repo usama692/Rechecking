@@ -41,7 +41,7 @@
 
 
     <div class="form-group">
-        <label for="phone">Phone:</label>
+        <label for="phone">Phone:(Optional)</label>
         <input type="text" class="form-control" id="phone" name="phone"  placeholder="055-1234567">
     </div> 
 
