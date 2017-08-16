@@ -81,17 +81,18 @@ if(strtotime(date("d-m-Y")) <= strtotime(LASTDATE))
 ?>
 <div id="hidDivForPrint">
     <form enctype="multipart/form-data" id="recheckingStatus" name="recheckingStatus" method="post" action="<?php echo base_url(); ?>index.php/Rechecking/recheckingStatus">
-        <h3 class="bold"><strong>Rechecking Status</strong></h3>  
+        <h3 class="bold"><strong>1- Rechecking Status</strong></h3>
         <div class="form-group">
-            <label for="appId">Application ID / Roll No:</label>
-            <input type="text" class="form-control" id="appId" name="appId" value="<?php @$app = @$_POST['appId']; if ($app != '') echo $app; else echo $app = $this->uri->segment(3);  ?>" placeholder="Enter Application ID / Roll No" required="required">
             <label for="stClass">Select Class:</label>
             <select id="stClass" name="stClass" required  class="form-control">
-                <option value='9' <?php if(CLS == 9){echo " selected";} ?>>9th</option>
-                <option value='10' <?php if(CLS == 10){echo " selected";} ?>>10th</option>
-                <option value='11' <?php if(CLS == 11){echo " selected";} ?>>11th</option>
-                <option value='12' <?php if(CLS == 12){echo " selected";} ?>>12th</option>
+                <option value='0' selected="selected">NONE</option>
+                <option value='9'>9th</option>
+                <option value='10'>10th</option>
+                <option value='11'>11th</option>
+                <option value='12'>12th</option>
             </select>
+            <label for="appId">Application ID / Roll No:</label>
+            <input type="text" class="form-control" id="appId" name="appId" value="<?php @$app = @$_POST['appId']; if ($app != '') echo $app; else echo $app = $this->uri->segment(3);  ?>" placeholder="Enter Application ID / Roll No" required="required">
         </div>
         <?php
         if(@$data != false)
@@ -195,7 +196,7 @@ if(@$data != false)
             $case = 2;
             break;
         case 3:
-            $message = "Your visit date for rechecking at C.S.O Branch B.I.S.E GRW is ".@$data[0]['rechk_date']." at 09:00AM to 03:00PM<br />Note: On Friday 12:00PM to 02:00PM is break time.";
+            $message = "Your visit date for rechecking at C.S.O Branch B.I.S.E GRW is ".@$data[0]['rechk_date']." at 12:00PM to 05:00PM<br />Note: On Friday 2:00PM to 05:00PM and On Sunday 09:00AM to 03:00PM";
             $case = 3;
             break;
         case 4:

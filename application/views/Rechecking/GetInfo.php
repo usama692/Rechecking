@@ -37,7 +37,7 @@
         </div>
     </div>
     <hr class="colorgraph">
-    <h3 class="bold"><strong>Apply For Rechecking</strong></h3>  
+    <h3 class="bold"><strong>2- Apply For Rechecking</strong></h3>  
     <?php
     @$mysg = @$error['error_msg'];
     if(@$mysg != "")

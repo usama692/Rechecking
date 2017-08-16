@@ -264,10 +264,21 @@
     function chkRechecking()
     {
         var app = $('#appId').val();
-        if(app == ''){
+        var stClass = $('#stClass').val();
+
+        if(stClass == 0){
+            alertify.error('Please Select Class to check status');
+            $('#stClass').focus();
+            return false;
+        }
+
+        else if(app == ''){
             alertify.error('Please Enter Application ID or Roll No');
             $('#appId').focus();
             return false;
+        }
+        else {
+        // do nothing
         }
     }
 

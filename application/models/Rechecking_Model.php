@@ -14,7 +14,7 @@ class Rechecking_Model extends CI_Model
         $chNo = $challanCheckArray['challan'];
         $paidDate = $challanCheckArray['paidDate'];
 
-        $query = $this->db->query("select count(*) total from tblRechecking_SSC_Current where IsActive = 1 AND class = ".CLS." AND sess = ".sess." AND Iyear = ".YEAR." AND  challanno = '".$chNo."' AND CONVERT(char(20), paid_date,126) =  '".$paidDate."'");    
+        $query = $this->db->query("select count(*) total from tblRechecking_SSC_Current where IsActive = 1 AND sess = ".sess." AND Iyear = ".YEAR." AND  challanno = '".$chNo."' AND CONVERT(char(20), paid_date,126) =  '".$paidDate."'");    
 
 
         if(!$query)
