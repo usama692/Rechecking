@@ -14,7 +14,6 @@ if($now >= $future)
             </div>
         </div>
         <div class="row">
-
             <div class="pull-right">
                 <a href="http://www.bisegrw.com/authorized-banks.html" class="imglink" target="_blank"><img src="<?php echo base_url(); ?>assets/img/Point2.jpg" class="img-responsive" alt="Terms & Conditions"></a>
             </div>
