@@ -221,7 +221,6 @@ if(@$data != false)
         <?php
     }
     ?>
-
     <div id="wrapper" class="container">
         <form enctype="multipart/form-data" id="returnApplicationForm" name="returnApplicationForm" method="post" >
             <div class="page-head-image">
