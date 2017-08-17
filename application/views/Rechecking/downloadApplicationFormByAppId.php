@@ -63,7 +63,7 @@ if(strtotime(date("d-m-Y")) > strtotime(LASTDATE))
     ?>
     <div class="alert alert-danger fade in alert-dismissable">
         <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close"></a>
-        <strong>Rechecking has been closed.</strong>
+        <strong>View your rechecking application status</strong>
     </div>
     <?php
 }
@@ -92,7 +92,7 @@ if(strtotime(date("d-m-Y")) <= strtotime(LASTDATE))
             <option value='12'>12th</option>
             </select>-->
             <label for="appId">Application ID / Roll No:</label>
-            <input type="text" class="form-control" id="appId" name="appId" value="<?php @$app = @$_POST['appId']; if ($app != '') echo $app; else echo $app = $this->uri->segment(3);  ?>" placeholder="Enter Application ID / Roll No" required="required">
+            <input type="text" class="form-control" maxlength="6" id="appId" name="appId" value="<?php @$app = @$_POST['appId']; if ($app != '') echo $app; else echo $app = $this->uri->segment(3);  ?>" placeholder="Enter Application ID / Roll No" required="required">
         </div>
         <?php
         if(@$data != false)

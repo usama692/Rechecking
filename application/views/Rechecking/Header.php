@@ -168,7 +168,8 @@
             $sess =  'Annual';
         else if(SESS == '2')
             $sess = 'Supply';
-            echo  '<p style="text-align:center;">Online Rechecking for '.SESSNAME.' '.'('.CLS.'th) ' .$sess.' '. YEAR.' </p>';   
+            //echo  '<p style="text-align:center;">Online Rechecking for '.SESSNAME.' '.'('.CLS.'th) ' .$sess.' '. YEAR.' </p>';   
+            echo'<p style="text-align:center;">ONLINE RECHECKING </p>';
         ?>
     </h2>
 </div>
