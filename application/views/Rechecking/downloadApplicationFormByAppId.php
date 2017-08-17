@@ -203,6 +203,10 @@ if(@$data != false)
             $message = "Your rechecking has been completed.";
             $case = 4;
             break;
+        case 5:
+            $message = "Your rechecking has been completed. No change found in rechecking";
+            $case = 5;
+            break;
         default:                             
             $message = "Application Status Not Found.";
             break;      
@@ -245,7 +249,7 @@ if(@$data != false)
                 </div>
                 <?php
             }
-            else if($case == 4){
+            else if($case == 4 || $case == 5){
                 ?>
                 <div class="alert alert-success">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close"></a>
