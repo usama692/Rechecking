@@ -1,6 +1,4 @@
-
 <?php
-
 $now    = new DateTime();
 $future = new DateTime("2017-08-19 11:30:00");
 

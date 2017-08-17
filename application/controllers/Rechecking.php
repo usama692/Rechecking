@@ -377,7 +377,7 @@ class Rechecking extends CI_Controller {
             {
                 $MobNo = '92' . substr($MobNo, 1);
                 $MobNo = str_replace('-','',$MobNo);
-                //$this->sendSms($MobNo, $candidateSmsString);
+                $this->sendSms($MobNo, $candidateSmsString);
             }
         }
         echo  json_encode($info);
@@ -402,7 +402,7 @@ class Rechecking extends CI_Controller {
         $this->load->model('Rechecking_Model'); 
 
         @$appId = $_POST['appId'];
-        @$stClass = $_POST['stClass'];
+        @$stClass = CLS;//$_POST['stClass'];
 
         if($appId == '')
         {
