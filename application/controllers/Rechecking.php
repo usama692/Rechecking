@@ -88,11 +88,11 @@ class Rechecking extends CI_Controller {
 
         if($challanCheck[0]['total'] != 0)
         {
-            $error_msg.='The Challan No. you entered already has been submitted.';
-            $this->load->library('session');
-            $mydata = array('data'=>$_POST,'error_msg'=>$error_msg);
-            $this->session->set_flashdata('error',$mydata );
-            redirect('Rechecking/index'); 
+            $error['noRecordFound'] = 'The Challan No. you entered already has been submitted.';
+            $this->load->view('Rechecking/Header.php');
+            $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
+            $this->load->view('Rechecking/GetInfo.php');
+            $this->load->view('Rechecking/Footer.php'); 
         }
 
         @$data = $this->Rechecking_Model->LoadData_Model($data);
@@ -106,20 +106,20 @@ class Rechecking extends CI_Controller {
         } 
         if(!$data)
         {
-            $error_msg.='Record Not Found Against Your Criteria';
-            $this->load->library('session');
-            $mydata = array('data'=>$_POST,'error_msg'=>$error_msg);
-            $this->session->set_flashdata('error',$mydata );
-            redirect('Rechecking/index');
+            $error['noRecordFound'] = 'Record Not Found Against Your Criteria';
+            $this->load->view('Rechecking/Header.php');
+            $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
+            $this->load->view('Rechecking/GetInfo.php');
+            $this->load->view('Rechecking/Footer.php'); 
         }
 
         else if($data[0]['status'] == 4)
         {
-            $error_msg.='You was Absent. You are not Eligible to Apply for Rechecking ';
-            $this->load->library('session');
-            $mydata = array('data'=>$_POST,'error_msg'=>$error_msg);
-            $this->session->set_flashdata('error',$mydata );
-            redirect('Rechecking/index');
+            $error['noRecordFound'] = 'You was Absent. You are not Eligible to Apply for Rechecking';
+            $this->load->view('Rechecking/Header.php');
+            $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
+            $this->load->view('Rechecking/GetInfo.php');
+            $this->load->view('Rechecking/Footer.php'); 
         }
 
         else
@@ -426,15 +426,14 @@ class Rechecking extends CI_Controller {
         }
 
         //DebugBreak();
-        
+
         if(!$val)
         {
-            
+
             $error['noRecordFound'] = 'Record Not Found Against Your Criteria';
             $this->load->view('Rechecking/Header.php');
             $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
             $this->load->view('Rechecking/getInfo.php');
-            
             $this->load->view('Rechecking/Footer.php'); 
         }
 

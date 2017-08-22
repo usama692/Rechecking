@@ -157,7 +157,7 @@ class Rechecking_Model extends CI_Model
     function getAppMob($rno)
     {
         $query = $this->db->query("select top 1 app_id, MobNo from OnlineOpr..tblRechecking_SSC_Current where rno = $rno order by app_id desc"); 
-
+        
         if(!$query)
         {
             return -1;
