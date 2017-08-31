@@ -81,7 +81,7 @@ if(strtotime(date("d-m-Y")) <= strtotime(LASTDATE))
 ?>
 <div id="hidDivForPrint">
     <form enctype="multipart/form-data" id="recheckingStatus" name="recheckingStatus" method="post" action="<?php echo base_url(); ?>index.php/Rechecking/recheckingStatus">
-        <h3 class="bold"><strong>1- Rechecking Status(9th + 10th)</strong></h3>
+        <h3 class="bold"><strong>1- Rechecking Status</strong></h3>
         <div class="form-group">
             <!-- <label for="stClass">Select Class:</label>
             <select id="stClass" name="stClass" required  class="form-control">

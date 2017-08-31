@@ -52,8 +52,9 @@ class Rechecking extends CI_Controller {
         $this->load->library('session');
         $this->load->model('Rechecking_Model'); 
 
-        $data['bName'] = $_POST['bName'];
+
         $data['challan'] = $_POST['challan'];
+        $data['bName'] = $_POST['bName'];
         $data['paidDate'] = $_POST['paidDate'];
         $data['amount'] = $_POST['amount'];
         $data['matRno'] = $_POST['matRno'];
@@ -91,7 +92,8 @@ class Rechecking extends CI_Controller {
             $error['noRecordFound'] = 'The Challan No. you entered already has been submitted.';
             $this->load->view('Rechecking/Header.php');
             $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
-            $this->load->view('Rechecking/GetInfo.php');
+            $mydata = array('data'=>$_POST);
+            $this->load->view('Rechecking/GetInfo.php',  array('error' => $mydata));
             $this->load->view('Rechecking/Footer.php'); 
         }
 
@@ -109,7 +111,8 @@ class Rechecking extends CI_Controller {
             $error['noRecordFound'] = 'Record Not Found Against Your Criteria';
             $this->load->view('Rechecking/Header.php');
             $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
-            $this->load->view('Rechecking/GetInfo.php');
+            $mydata = array('data'=>$_POST);
+            $this->load->view('Rechecking/GetInfo.php',  array('error' => $mydata));
             $this->load->view('Rechecking/Footer.php'); 
         }
 
@@ -118,8 +121,9 @@ class Rechecking extends CI_Controller {
             $error['noRecordFound'] = 'You was Absent. You are not Eligible to Apply for Rechecking';
             $this->load->view('Rechecking/Header.php');
             $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
-            $this->load->view('Rechecking/GetInfo.php');
-            $this->load->view('Rechecking/Footer.php'); 
+            $mydata = array('data'=>$_POST);
+            $this->load->view('Rechecking/GetInfo.php',  array('error' => $mydata));
+            $this->load->view('Rechecking/Footer.php');  
         }
 
         else
@@ -325,9 +329,7 @@ class Rechecking extends CI_Controller {
             'amount' => $amount,
 
         );
-
         //DebugBreak();
-
         $val = $this->Rechecking_Model->InsertRecheckingForm_Model($data);
 
         if($val == -1)
@@ -377,7 +379,7 @@ class Rechecking extends CI_Controller {
             {
                 $MobNo = '92' . substr($MobNo, 1);
                 $MobNo = str_replace('-','',$MobNo);
-                $this->sendSms($MobNo, $candidateSmsString);
+                //$this->sendSms($MobNo, $candidateSmsString);
             }
         }
         echo  json_encode($info);
@@ -429,7 +431,6 @@ class Rechecking extends CI_Controller {
 
         if(!$val)
         {
-
             $error['noRecordFound'] = 'Record Not Found Against Your Criteria';
             $this->load->view('Rechecking/Header.php');
             $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));

@@ -132,7 +132,8 @@
     </style>
 
 </head>
-<body oncontextmenu="return false">
+<!--<body oncontextmenu="return false">-->
+<body>
 <div class="mPageloader">
     <div class="CSSspinner2 large">
         <div class="spinner-container container1">

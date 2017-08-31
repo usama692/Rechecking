@@ -14,12 +14,24 @@ class Rechecking_Model extends CI_Model
         $chNo = $challanCheckArray['challan'];
         $paidDate = $challanCheckArray['paidDate'];
 
-        $query = $this->db->query("select count(*) total from tblRechecking_SSC_Current where IsActive = 1 AND sess = ".sess." AND Iyear = ".YEAR." AND  challanno = '".$chNo."' AND CONVERT(char(20), paid_date,126) =  '".$paidDate."'");    
+        @$table = '';
+        @$tableSsc = 'OnlineOpr..tblRechecking_SSC_Current';
+        @$tableHssc = 'OnlineOpr..tblRechecking_HSSC_Current';
+        if(CLS == 9 || CLS == 10){
+            $table = $tableSsc;
+        }
+        else if(CLS == 11 || CLS == 12){
+            $table = $tableHssc;
+        }
 
+        $query = $this->db->query("select count(*) total from  $table  where IsActive = 1 AND sess = ".sess." AND Iyear = ".YEAR." AND  challanno = '".$chNo."' AND CONVERT(char(20), paid_date,126) =  '".$paidDate."'");    
 
         if(!$query)
         {
             return -1;
+        }
+        else {
+            //do nothing
         }
 
         $rowcount = $query->num_rows();
@@ -157,7 +169,7 @@ class Rechecking_Model extends CI_Model
     function getAppMob($rno)
     {
         $query = $this->db->query("select top 1 app_id, MobNo from OnlineOpr..tblRechecking_SSC_Current where rno = $rno order by app_id desc"); 
-        
+
         if(!$query)
         {
             return -1;
@@ -183,7 +195,7 @@ class Rechecking_Model extends CI_Model
         @$YEAR = YEAR;
         @$SESS = SESS;
 
-        $query = $this->db->query("exec OnlineOpr..spRecheckingStatus $CLS, $YEAR, $SESS, $appId, $appId");
+        $query = $this->db->query("exec OnlineOpr..spRecheckingStatus $CLS, 2017, $SESS, $appId, $appId");
 
         if(!$query)
         {

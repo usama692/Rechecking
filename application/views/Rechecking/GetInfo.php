@@ -188,12 +188,12 @@ if($now >= $future)
             <h4 class="bold">Exam Information</h4>
             <div class="form-group">
                 <label for="matRno">Matric Roll No:</label>
-                <input type="text" class="form-control" id="matRno" name="matRno" >
+                <input type="text" class="form-control" id="matRno" name="matRno" value="<?php echo @$error['data']['matRno'] ?>">
             </div>
 
             <div class="form-group">
                 <label for="interRno">Inter Roll No:</label>
-                <input type="text" class="form-control" id="interRno" name="interRno" >
+                <input type="text" class="form-control" id="interRno" name="interRno" value="<?php echo @$error['data']['interRno'] ?>">
             </div>
 
             <?php

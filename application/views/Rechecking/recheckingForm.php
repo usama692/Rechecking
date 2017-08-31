@@ -17,8 +17,6 @@
     }   
     ?>
     <h3 class="bold">Personal Information</h3>
-
-
     <div class="form-group">
         <img id="previewImg" style="width:140px; height: 140px;" class="img-rounded" src="<?php echo $image_path_selected ?>" alt="Candidate Image">
     </div>
@@ -326,25 +324,43 @@
         'COMPUTER HARDWARE' => '90', 
         'COMPUTER SCIENCES_DFD' => '93', 
         'HEALTH & PHYSICAL EDUCATION_DFD' => '94' 
+    );
 
+    $interPracticalSubjectsArray = array(
+
+        'LIBRARY SCIENCE'=>'8',
+        'GEOGRAPHY'=>'12',
+        'PSYCHOLOGY'=>'16',
+        'STATISTICS'=>'18',
+        'OUTLINES OF HOME ECONOMICS'=>'21',
+        'FINE ARTS'=>'23',
+        'COMMERCIAL PRACTICE'=>'38',
+        'HEALTH & PHYSICAL EDUCATION'=>'42',
+        'BIOLOGY'=>'46',
+        'PHYSICS'=>'47',
+        'CHEMISTRY'=>'48',
+        'CLOTHING & TEXTILE (Home-Economics Group)'=>'75',
+        'HOME MANAGEMNET (Home-Economics Group)'=>'76',
+        'NURSING'=>'79',
+        'COMPUTER SCIENCE'=>'83',
+        'AGRICULTURE'=>'90',
+        'TYPING'=>'96',
+        'COMPUTER STUDIES'=>'98'
     );
 
     if(@$data[0]['sub1Ap1'] == 1 || @$data[0]['sub2Ap1'] == 1 || @$data[0]['sub3Ap1'] == 1 || @$data[0]['sub4Ap1'] == 1 || @$data[0]['sub5Ap1'] == 1 || @$data[0]['sub6Ap1'] == 1 || @$data[0]['sub7Ap1'] == 1 || @$data[0]['sub8ap1'] == 1)
     {
         ?>
-
         <h4 class="h4">Subjects  Part-I</h4>
-
         <div class="form-group">
             <?php
 
-            //DebugBreak();
             if (@$data[0]['status'] != 4)
             {
                 for(@$i = 1; $i < 9; $i++)
                 {
                     $ap = "";
-                    if($i==8)
+                    if(($i==8) && (CLS == 9 || CLS == 10))
                     {
                         $ap= 'ap1';
                     }
@@ -352,6 +368,7 @@
                     {
                         $ap = 'Ap1';
                     }
+
                     if((@$data[0]['cat09'] !='' || @$data[0]['cat11'] !='') && (@$data[0]['sub'.$i.$ap] == 1) )
                     {
                         @$disable = ""; 
@@ -389,16 +406,13 @@
                 <?php 
             }  
             ?>             
-
         </div>
-
         <?php
     }
 
     if(@$data[0]['sub1Ap2'] == 1 ||  @$data[0]['sub2Ap2'] == 1 ||  @$data[0]['sub3ap2'] == 1 ||  @$data[0]['sub4Ap2'] == 1 ||  @$data[0]['sub5Ap2'] == 1 ||  @$data[0]['sub6Ap2'] == 1 ||  @$data[0]['sub7Ap2'] == 1 ||  @$data[0]['sub8Ap2'] == 1)
     {
         ?>
-
         <hr class="colorgraph">
         <h4 class="h4">Subjects  Part-II</h4>
         <div class="form-group">
@@ -406,17 +420,24 @@
 
             if (@$data[0]['status'] != 4)
             {
+                //DebugBreak();
 
                 for($i = 1; $i < 9; $i++)
                 {
                     $ap = "";
-                    if($i==3)
+                    if(($i==3 )&& (CLS == 9 || CLS == 10))
                     {
                         $ap= 'ap2';
                     }
                     else
                     {
                         $ap = 'Ap2';
+                    }
+
+                    if($i == 3 && CLS == 12)
+                    {
+                        $i = 8;
+                        $bit = 1;
                     }
                     if((@$data[0]['cat10'] !='' || @$data[0]['cat12'] !='') && (@$data[0]['sub'.$i.$ap] == 1)&& (@$data[0]['status'] != 4))
                     {
@@ -436,12 +457,35 @@
                             @$alreadyApplied ="";
                         }
                         ?>   
+
+                        <?php
+                        if($i == 8 && $bit == 0)
+                        {
+                            break;             
+                        }
+                        ?>
                         <div class="form-group">
                             <label class="checkbox-inline">                     
-                                <input type="checkbox" name="<?= 'p2sub'.$i ?>" <?php echo $disable.' '. $checked ; ?> id="subList" value="<?= @$data[0]['sub'.$i]?>"><span style="padding: 10px;"><?php  if(CLS == 9 || CLS == 10){ echo  array_search($data[0]['sub'.$i],$subarrayMatric);} else if(CLS == 11 || CLS == 12){ echo  array_search($data[0]['sub'.$i],$subarrayInter); } ?></span><?php echo $alreadyApplied ?></br>
+                                <input type="checkbox" name="<?= 'p2sub'.$i ?>" <?php echo $disable.' '. $checked ; ?> id="subList" value="<?= @$data[0]['sub'.$i]?>"><span style="padding: 10px;"><?php if(CLS == 9 || CLS == 10){ echo  array_search($data[0]['sub'.$i],$subarrayMatric);} else if(CLS == 11 || CLS == 12)
+                                    {
+                                        if((@$data[0]['grp_cd'] == 5) && ($i > 4) && $bit == 0)
+                                        {
+                                            echo  array_search(@$data[0]['sub'.$i.'A'],$subarrayInter); 
+                                        }
+                                        else{
+                                            echo  array_search(@$data[0]['sub'.$i],$subarrayInter); 
+                                        }
+                                    } 
+                                    ?>
+                                </span><?php echo $alreadyApplied ?></br>
                             </label>
                         </div> 
                         <?php
+                    }
+                    if($i == 8 && CLS == 12 && $bit==1)
+                    {
+                        $i = 3;
+                        $bit = 0;
                     }
                 }
             }
@@ -454,13 +498,9 @@
                 <?php
             }
             ?>
-
         </div>
-
         <?php
     }
-
-    //DebugBreak();
 
     if( ( @$data[0]['sub5Ap2'] == 1 || @$data[0]['sub6Ap2'] == 1 || @$data[0]['sub7Ap2'] == 1) && (@$data[0]['sub5sp2'] == 1 || @$data[0]['sub6sp2'] == 1 || @$data[0]['sub7sp2'] == 1) )
     {
@@ -475,7 +515,16 @@
             {
                 @$currVal =  $data[0]['sub5'];
 
-                if(array_search($currVal, $matricPracticalSubjectsArray))
+                if(CLS == 10){
+                    @$matricPrac =  array_search($currVal, $matricPracticalSubjectsArray);
+                    $val = $matricPrac;
+                }
+                else if(CLS == 12){
+                    @$interPrac =  array_search($currVal, $interPracticalSubjectsArray);  
+                    $val = $interPrac;
+                }
+
+                if($val)
                 {
                     if(@$data[0]['sub5prec2'] == 1)
                     {
@@ -503,7 +552,16 @@
             {
                 @$currVal =  $data[0]['sub6'];
 
-                if(array_search($currVal, $matricPracticalSubjectsArray))
+                if(CLS == 10){
+                    @$matricPrac =  array_search($currVal, $matricPracticalSubjectsArray);
+                    $val = $matricPrac;
+                }
+                else if(CLS == 12){
+                    @$interPrac =  array_search($currVal, $interPracticalSubjectsArray);  
+                    $val = $interPrac;
+                }
+
+                if($val)
                 {
                     if(@$data[0]['sub6prec2'] == 1)
                     {
@@ -526,11 +584,26 @@
                     <?php
                 }
             }
+
             if(@$data[0]['sub7sp2'] == 1 && @$data[0]['sub7Ap2'] == 1)
             {
-                @$currVal =  $data[0]['sub7'];
+                if(CLS == 12 && @$data[0]['grp_cd'] == 5){
+                    @$currVal =  $data[0]['sub7A'];    
+                }
+                else{
+                    @$currVal =  $data[0]['sub7'];        
+                }
 
-                if(array_search($currVal, $matricPracticalSubjectsArray))
+                if(CLS == 10){
+                    @$matricPrac =  array_search($currVal, $matricPracticalSubjectsArray);
+                    $val = $matricPrac;
+                }
+                else if(CLS == 12){
+                    @$interPrac =  array_search($currVal, $interPracticalSubjectsArray);  
+                    $val = $interPrac;
+                }
+
+                if($val)
                 {
                     if(@$data[0]['sub7prec2'] == 1)
                     {
@@ -547,7 +620,17 @@
                     ?>
                     <div class="form-group">
                         <label class="checkbox-inline">
-                            <input type="checkbox"  <?php echo $disable.' '. $checked ; ?>  id="subList" name="<?= 'sub7sp2' ?>" value="<?= @$data[0]['sub7']?>"><span style="padding: 10px;"><?php  if(CLS == 9 || CLS == 10){ echo  array_search($data[0]['sub7'],$subarrayMatric);} else if(CLS == 11 || CLS == 12){ echo  array_search($data[0]['sub7'],$subarrayInter); } ?></span><?php echo $alreadyApplied ?></br>
+                            <input type="checkbox"  <?php echo $disable.' '. $checked ; ?>  id="subList" name="<?= 'sub7sp2' ?>" value="<?= @$data[0]['sub7']?>"><span style="padding: 10px;"><?php  if(CLS == 9 || CLS == 10){ echo  array_search($data[0]['sub7'],$subarrayMatric);} else if(CLS == 11 || CLS == 12)
+                                {
+                                    if(@$data[0]['grp_cd'] == 5 && CLS == 12){
+                                        echo  array_search($data[0]['sub7A'],$subarrayInter); 
+                                    }
+                                    else{
+                                        echo  array_search($data[0]['sub7'],$subarrayInter); 
+                                    }
+                                } 
+                                ?>
+                            </span><?php echo $alreadyApplied ?></br>
                         </label>
                     </div> 
                     <?php
@@ -574,11 +657,6 @@
     <input type="hidden" id="sess" name="sess" value="<?php echo @$data[0]['sess'] ?>"> 
     <input type="hidden" id="rno" name="rno" value="<?php echo @$data[0]['rno'] ?>"> 
     <input type="hidden" id="grp_cd" name="grp_cd" value="<?php echo @$data[0]['grp_cd'] ?>"> 
-
-
-    <input type="hidden" id="" name="" value="<?php echo @$data[0]['grp_cd'] ?>"> 
-
-
 
     <!---End Hidden fields -->
 
