@@ -14,17 +14,10 @@ class Rechecking_Model extends CI_Model
         $chNo = $challanCheckArray['challan'];
         $paidDate = $challanCheckArray['paidDate'];
 
-        @$table = '';
         @$tableSsc = 'OnlineOpr..tblRechecking_SSC_Current';
         @$tableHssc = 'OnlineOpr..tblRechecking_HSSC_Current';
-        if(CLS == 9 || CLS == 10){
-            $table = $tableSsc;
-        }
-        else if(CLS == 11 || CLS == 12){
-            $table = $tableHssc;
-        }
 
-        $query = $this->db->query("select count(*) total from  $table  where IsActive = 1 AND sess = ".sess." AND Iyear = ".YEAR." AND  challanno = '".$chNo."' AND CONVERT(char(20), paid_date,126) =  '".$paidDate."'");    
+        $query = $this->db->query("select count(*) total, app_id from  $tableHssc  where IsActive = 1 AND sess = ".sess." AND Iyear = ".YEAR." AND  challanno = '".$chNo."' AND CONVERT(char(20), paid_date,126) =  '".$paidDate."' group by app_id");    
 
         if(!$query)
         {
@@ -42,7 +35,28 @@ class Rechecking_Model extends CI_Model
         }
         else
         {
-            return  false;
+
+            $query = $this->db->query("select count(*) total, app_id from  $tableSsc  where IsActive = 1 AND sess = ".sess." AND Iyear = ".YEAR." AND  challanno = '".$chNo."' AND CONVERT(char(20), paid_date,126) =  '".$paidDate."' group by app_id ");  
+
+            if(!$query)
+            {
+                return -1;
+            }
+            else {
+                //do nothing
+            }
+
+            $rowcount = $query->num_rows();
+
+            if($rowcount > 0)
+            {
+                return $query->result_array();
+            }
+
+            else
+            {
+                return  false;
+            }
         }
     }
 
@@ -195,7 +209,7 @@ class Rechecking_Model extends CI_Model
         @$YEAR = YEAR;
         @$SESS = SESS;
 
-        $query = $this->db->query("exec OnlineOpr..spRecheckingStatus $CLS, 2017, $SESS, $appId, $appId");
+        $query = $this->db->query("exec OnlineOpr..spRecheckingStatus $CLS, $YEAR, $SESS, $appId, $appId");
 
         if(!$query)
         {

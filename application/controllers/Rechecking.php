@@ -77,6 +77,7 @@ class Rechecking extends CI_Controller {
         @$challanCheckArray['paidDate'] =  $_POST['paidDate'];       
 
         @$challanCheck = $this->Rechecking_Model->checkAlreadyChallan($challanCheckArray);
+        
 
         if(@$challanCheck == -1)
         {
@@ -89,15 +90,18 @@ class Rechecking extends CI_Controller {
 
         if($challanCheck[0]['total'] != 0)
         {
-            $error['noRecordFound'] = 'The Challan No. you entered already has been submitted.';
+            @$chalanAppId = $challanCheck[0]['app_id'];
+            $error['noRecordFound'] = 'The Challan No. you entered already has been submitted by Application id <b> '.$chalanAppId.' </b>';
             $this->load->view('Rechecking/Header.php');
             $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
             $mydata = array('data'=>$_POST);
             $this->load->view('Rechecking/GetInfo.php',  array('error' => $mydata));
             $this->load->view('Rechecking/Footer.php'); 
+            return;
         }
 
         @$data = $this->Rechecking_Model->LoadData_Model($data);
+
         if(@$data == -1)
         {
             $exception   = $this->db->error();
@@ -114,6 +118,7 @@ class Rechecking extends CI_Controller {
             $mydata = array('data'=>$_POST);
             $this->load->view('Rechecking/GetInfo.php',  array('error' => $mydata));
             $this->load->view('Rechecking/Footer.php'); 
+            return;
         }
 
         else if($data[0]['status'] == 4)
@@ -124,6 +129,7 @@ class Rechecking extends CI_Controller {
             $mydata = array('data'=>$_POST);
             $this->load->view('Rechecking/GetInfo.php',  array('error' => $mydata));
             $this->load->view('Rechecking/Footer.php');  
+            return;
         }
 
         else
@@ -404,7 +410,7 @@ class Rechecking extends CI_Controller {
         $this->load->model('Rechecking_Model'); 
 
         @$appId = $_POST['appId'];
-        @$stClass = CLS;//$_POST['stClass'];
+        @$stClass = $_POST['stClass'];
 
         if($appId == '')
         {
@@ -436,6 +442,7 @@ class Rechecking extends CI_Controller {
             $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
             $this->load->view('Rechecking/getInfo.php');
             $this->load->view('Rechecking/Footer.php'); 
+            return;
         }
 
         else
