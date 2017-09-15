@@ -511,6 +511,44 @@
         <div class="form-group">
             <?php
 
+
+            if(@$data[0]['sub4sp2'] == 1 && @$data[0]['sub4Ap2'] == 1)
+            {
+                @$currVal =  $data[0]['sub4'];
+
+                if(CLS == 10){
+                    @$matricPrac =  array_search($currVal, $matricPracticalSubjectsArray);
+                    $val = $matricPrac;
+                }
+                else if(CLS == 12){
+                    @$interPrac =  array_search($currVal, $interPracticalSubjectsArray);  
+                    $val = $interPrac;
+                }
+
+                if($val)
+                {
+                    if(@$data[0]['sub4prec2'] == 1)
+                    {
+                        $disable = 'disabled';
+                        $checked = "checked";
+                        @$alreadyApplied ="(<span style='color:green'>Already applied</span>)";
+                    }
+                    else
+                    {
+                        @$disable = "";   
+                        @$checked = ""; 
+                        @$alreadyApplied ="";
+                    }
+                    ?>
+                    <div class="form-group">
+                        <label class="checkbox-inline">
+                            <input type="checkbox"  <?php echo $disable.' '. $checked ; ?>  id="subList" name="<?= 'sub4sp2' ?>" value="<?= @$data[0]['sub4']?>"><span style="padding: 10px;"><?php  if(CLS == 9 || CLS == 10){ echo  array_search($data[0]['sub4'],$subarrayMatric);} else if(CLS == 11 || CLS == 12){ echo  array_search($data[0]['sub4'],$subarrayInter); } ?></span><?php echo $alreadyApplied ?></br>
+                        </label>
+                    </div> 
+                    <?php
+                }
+            }
+
             if(@$data[0]['sub5sp2'] == 1 && @$data[0]['sub5Ap2'] == 1)
             {
                 @$currVal =  $data[0]['sub5'];

@@ -184,6 +184,8 @@ class Rechecking extends CI_Controller {
         @$sub7p2 = @$_POST['p2sub7'];
         @$sub8p2 = @$_POST['p2sub8'];
 
+        
+        @$sub4Pr = @$_POST['sub4sp2'];
         @$sub5Pr = @$_POST['sub5sp2'];
         @$sub6Pr = @$_POST['sub6sp2'];
         @$sub7Pr = @$_POST['sub7sp2'];
@@ -283,6 +285,7 @@ class Rechecking extends CI_Controller {
         if(@$sub8p2 != ''){@$sub8rec2 = 1; } else { @$sub8rec2 = 0;}
 
 
+        if(@$sub4Pr != ''){@$sub4rec2Pr = 1; } else { @$sub4rec2Pr = 0;}
         if(@$sub5Pr != ''){@$sub5rec2Pr = 1; } else { @$sub5rec2Pr = 0;}
         if(@$sub6Pr != ''){@$sub6rec2Pr = 1; } else { @$sub6rec2Pr = 0;}
         if(@$sub7Pr != ''){@$sub7rec2Pr = 1; } else { @$sub7rec2Pr = 0;}    
@@ -309,7 +312,8 @@ class Rechecking extends CI_Controller {
             'sub4' => $sub4,
             'sub4Rec1' => $sub4rec1,
             'sub4Rec2' => $sub4rec2,
-
+            'sub4Prec2' => $sub4rec2Pr,
+            
             'sub5' => $sub5,
             'sub5Rec1' => $sub5rec1,
             'sub5Rec2' => $sub5rec2,
@@ -370,7 +374,7 @@ class Rechecking extends CI_Controller {
         if($info['error'] == 1)
         {
             $mobApp = $this->Rechecking_Model->getAppMob($val[0]['rno']);
-            
+
             if($mobApp == -1)
             {
                 $exception   = $this->db->error();

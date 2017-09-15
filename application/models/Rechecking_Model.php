@@ -130,6 +130,7 @@ class Rechecking_Model extends CI_Model
         @$sub4 = $data['sub4'];
         @$sub4Rec1 = $data['sub4Rec1'];
         @$sub4Rec2 = $data['sub4Rec2'];
+        @$sub4Prec2 = $data['sub4Prec2'];
 
         @$sub5 = $data['sub5'];
         @$sub5Rec1 = $data['sub5Rec1'];
@@ -160,7 +161,7 @@ class Rechecking_Model extends CI_Model
 
         //DebugBreak();
 
-        $query = $this->db->query("exec OnlineOpr..sp_Rechecking_Insert $rno, $class, $Iyear, $sess, $sub1, $sub1Rec1, $sub1Rec2, $sub2, $sub2Rec1, $sub2Rec2, $sub3, $sub3Rec1, $sub3Rec2, $sub4, $sub4Rec1, $sub4Rec2, $sub5, $sub5Rec1, $sub5Rec2, $sub5Prec2, $sub6, $sub6Rec1, $sub6Rec2, $sub6Prec2, $sub7, $sub7Rec1, $sub7Rec2, $sub7Prec2, $sub8, $sub8Rec1, $sub8Rec2, '".$MobNo."', '".$Phone."', '".$addr."', $challanno, '".$bank_name."', '".$paid_date."', $amount"); 
+        $query = $this->db->query("exec OnlineOpr..sp_Rechecking_Insert $rno, $class, $Iyear, $sess, $sub1, $sub1Rec1, $sub1Rec2, $sub2, $sub2Rec1, $sub2Rec2, $sub3, $sub3Rec1, $sub3Rec2, $sub4, $sub4Rec1, $sub4Rec2, $sub4Prec2, $sub5, $sub5Rec1, $sub5Rec2, $sub5Prec2, $sub6, $sub6Rec1, $sub6Rec2, $sub6Prec2, $sub7, $sub7Rec1, $sub7Rec2, $sub7Prec2, $sub8, $sub8Rec1, $sub8Rec2, '".$MobNo."', '".$Phone."', '".$addr."', $challanno, '".$bank_name."', '".$paid_date."', $amount"); 
 
 
         if(!$query)
