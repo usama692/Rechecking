@@ -59,16 +59,16 @@
 
     <?php
 
-    $grp =  @$data[0]['grp_cd'];
-    $exGrp = @$data[0]['exgrp'];
+    @$grp =  @$data[0]['grp_cd'];
+    @$exGrp = @$data[0]['exgrp'];
 
     if(CLS == 11 || CLS == 12){
 
         if($grp == 1){
-            $subGrp = 'Pre-Engineering';
+            $subGrp = 'Pre-Medical';
         }
         else if($grp == 2){
-            $subGrp = 'Pre-Medical';
+            $subGrp = 'Pre-Engineering';
         }
         else if($grp == 3){
             $subGrp = 'Humanities';

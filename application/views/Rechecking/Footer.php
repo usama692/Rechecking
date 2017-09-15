@@ -51,11 +51,11 @@
     $("#challan").keypress(function (e) {
 
         var challan = $("#challan").val();    
-        if(challan.length >= 8 ){
+        if(challan.length >= 8 && (e.which != 13)) {
             alertify.error('You cannot enter more than 8 digits');
             return false;
         }
-        else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which != 13)) {
             alertify.error('Please Use Numaric Only');
             return false;
         }
@@ -64,11 +64,11 @@
     $("#matRno").keypress(function (e) {
 
         var matRno = $("#matRno").val()    
-        if(matRno.length >= 6 ){
+        if(matRno.length >= 6 && (e.which != 13)) {
             alertify.error('You cannot enter more than 6 digits');
             return false;
         }
-        else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which != 13)) {
             alertify.error('Please Use Numaric Only');
             return false;
         }
@@ -78,12 +78,12 @@
 
         var interRno = $("#interRno").val()    
 
-        if(interRno.length >= 6 ){
+        if(interRno.length >= 6 && (e.which != 13)) {
             alertify.error('You cannot enter more than 6 digits');
             return false;
         }
 
-        else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which != 13)) {
             alertify.error('Please Use Numaric Only');
             return false;
         }
@@ -93,12 +93,12 @@
 
         var amount = $("#amount").val()    
 
-        if(amount.length >= 5 ){
+        if(amount.length >= 5 && (e.which != 13)) {
             alertify.error('You cannot enter more than 5 digits');
             return false;
         }
 
-        else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        else if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which != 13)) {
             alertify.error('Please Use Numaric Only');
             return false;
         }
@@ -278,7 +278,7 @@
             return false;
         }
         else {
-        // do nothing
+            // do nothing
         }
     }
 

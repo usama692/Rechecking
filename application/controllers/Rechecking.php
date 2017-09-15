@@ -53,17 +53,17 @@ class Rechecking extends CI_Controller {
         $this->load->model('Rechecking_Model'); 
 
 
-        $data['challan'] = $_POST['challan'];
-        $data['bName'] = $_POST['bName'];
-        $data['paidDate'] = $_POST['paidDate'];
-        $data['amount'] = $_POST['amount'];
-        $data['matRno'] = $_POST['matRno'];
+        @$data['challan'] = $_POST['challan'];
+        @$data['bName'] = $_POST['bName'];
+        @$data['paidDate'] = $_POST['paidDate'];
+        @$data['amount'] = $_POST['amount'];
+        @$data['matRno'] = $_POST['matRno'];
 
         if(CLS == 9 || CLS == 10){
-            $data['dob'] = $_POST['dob'];
+            @$data['dob'] = $_POST['dob'];
         }
         else if(CLS == 11 || CLS == 12){
-            $data['interRno'] = $_POST['interRno'];    
+            @$data['interRno'] = $_POST['interRno'];    
         }
 
         @$bName = $data['bName'];
@@ -77,7 +77,7 @@ class Rechecking extends CI_Controller {
         @$challanCheckArray['paidDate'] =  $_POST['paidDate'];       
 
         @$challanCheck = $this->Rechecking_Model->checkAlreadyChallan($challanCheckArray);
-        
+
 
         if(@$challanCheck == -1)
         {
@@ -143,6 +143,11 @@ class Rechecking extends CI_Controller {
     public function InsertRecheckingForm()
     {
         //DebugBreak();
+
+        if(strtotime(date("d-m-Y")) > strtotime(LASTDATE)) 
+        {
+            redirect('Rechecking/index');
+        }
 
         $this->load->library('session');
         $this->load->model('Rechecking_Model'); 
@@ -335,7 +340,7 @@ class Rechecking extends CI_Controller {
             'amount' => $amount,
 
         );
-        //DebugBreak();
+
         $val = $this->Rechecking_Model->InsertRecheckingForm_Model($data);
 
         if($val == -1)
@@ -365,7 +370,7 @@ class Rechecking extends CI_Controller {
         if($info['error'] == 1)
         {
             $mobApp = $this->Rechecking_Model->getAppMob($val[0]['rno']);
-
+            
             if($mobApp == -1)
             {
                 $exception   = $this->db->error();
@@ -385,7 +390,7 @@ class Rechecking extends CI_Controller {
             {
                 $MobNo = '92' . substr($MobNo, 1);
                 $MobNo = str_replace('-','',$MobNo);
-                //$this->sendSms($MobNo, $candidateSmsString);
+                $this->sendSms($MobNo, $candidateSmsString);
             }
         }
         echo  json_encode($info);
