@@ -561,7 +561,7 @@ class Rechecking extends CI_Controller {
 
         else if( 
             empty($_POST['p1sub1']) && empty($_POST['p1sub2']) && empty($_POST['p1sub3']) && empty($_POST['p1sub4']) && empty($_POST['p1sub5']) && empty($_POST['p1sub6']) && empty($_POST['p1sub7']) && empty($_POST['p1sub8']) && 
-            empty($_POST['p2sub1']) && empty($_POST['p2sub2']) && empty($_POST['p2sub3']) && empty($_POST['p2sub4']) && empty($_POST['p2sub5']) && empty($_POST['p2sub6']) && empty($_POST['p2sub7']) && empty($_POST['p2sub8']) &&
+            empty($_POST['p2sub1']) && empty($_POST['p2sub2']) && empty($_POST['p2sub3']) && empty($_POST['p2sub4']) && empty($_POST['p2sub5']) && empty($_POST['p2sub6']) && empty($_POST['p2sub7']) && empty($_POST['p2sub8']) && empty($_POST['sub4sp2']) &&
             empty($_POST['sub5sp2']) && empty($_POST['sub6sp2']) && empty($_POST['sub7sp2'])
             )
             {

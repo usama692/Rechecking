@@ -64,7 +64,7 @@
     $("#matRno").keypress(function (e) {
 
         var matRno = $("#matRno").val()    
-        if(matRno.length >= 6 && (e.which != 13)) {
+        if(matRno.length >= 7 && (e.which != 13)) {
             alertify.error('You cannot enter more than 6 digits');
             return false;
         }

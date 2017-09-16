@@ -121,7 +121,7 @@ if($now >= $future)
                     <option value='Tanda Mota - 1685' <?php if(@$error['data']['bName']=='Tanda Mota - 1685'){echo " selected";} ?>>Tanda Mota</option>
                     <option value='SARAI ALAMGIR-PAKIST - 2222' <?php if(@$error['data']['bName']=='SARAI ALAMGIR-PAKIST - 2222'){echo " selected";} ?>>SARAI ALAMGIR-PAKIST</option>
                     <option value='Mahloo Khokhar - 2296' <?php if(@$error['data']['bName']=='Mahloo Khokhar - 2296'){echo " selected";} ?>>Mahloo Khokhar</option>
-                    <option value='Karianwala - 5011' <?php if(@$error['data']['bName']=='Karianwala - 5011'){echo " selected";} ?>>Karianwala</option>
+                    <option value='BHIMBAR ROAD GUJRAT (Karianwala) - 5011' <?php if(@$error['data']['bName']=='BHIMBAR ROAD GUJRAT (Karianwala) - 5011'){echo " selected";} ?>>BHIMBAR ROAD GUJRAT (Karianwala)</option>
                     <option value='KUTCHERY CHOWK - 290' <?php if(@$error['data']['bName']=='KUTCHERY CHOWK - 290'){echo " selected";} ?>>KUTCHERY CHOWK</option>
                 </optgroup>
                 <optgroup label='M.B.DIN'>
