@@ -413,7 +413,7 @@ class Rechecking extends CI_Controller {
 
     function recheckingStatus()
     {
-        DebugBreak();
+        //DebugBreak();
 
         $this->load->library('session');
         $this->load->model('Rechecking_Model'); 
