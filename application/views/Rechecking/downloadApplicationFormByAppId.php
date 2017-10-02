@@ -196,7 +196,7 @@ if(@$data != false)
             $case = 2;
             break;
         case 3:
-            $message = "Your visit date for rechecking at C.S.O Branch B.I.S.E GRW is ".@$data[0]['rechk_date']." at 12:00PM to 05:00PM<br />Note: On Friday 2:00PM to 05:00PM and On Sunday 09:00AM to 03:00PM";
+            $message = "Your visit date for rechecking at C.S.O Branch B.I.S.E GRW is ".@$data[0]['rechk_date']." at ".@$data[0]['Rechk_Time']."<br />Note: On Friday 2:00PM to 05:00PM and On Sunday 09:00AM to 03:00PM";
             $case = 3;
             break;
         case 4:
