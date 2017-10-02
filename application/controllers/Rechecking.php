@@ -184,7 +184,7 @@ class Rechecking extends CI_Controller {
         @$sub7p2 = @$_POST['p2sub7'];
         @$sub8p2 = @$_POST['p2sub8'];
 
-        
+
         @$sub4Pr = @$_POST['sub4sp2'];
         @$sub5Pr = @$_POST['sub5sp2'];
         @$sub6Pr = @$_POST['sub6sp2'];
@@ -313,7 +313,7 @@ class Rechecking extends CI_Controller {
             'sub4Rec1' => $sub4rec1,
             'sub4Rec2' => $sub4rec2,
             'sub4Prec2' => $sub4rec2Pr,
-            
+
             'sub5' => $sub5,
             'sub5Rec1' => $sub5rec1,
             'sub5Rec2' => $sub5rec2,
@@ -413,7 +413,7 @@ class Rechecking extends CI_Controller {
 
     function recheckingStatus()
     {
-        //DebugBreak();
+        DebugBreak();
 
         $this->load->library('session');
         $this->load->model('Rechecking_Model'); 
@@ -449,7 +449,10 @@ class Rechecking extends CI_Controller {
             $error['noRecordFound'] = 'Record Not Found Against Your Criteria';
             $this->load->view('Rechecking/Header.php');
             $this->load->view('Rechecking/downloadApplicationFormByAppId.php',  array('error' => $error));
-            $this->load->view('Rechecking/getInfo.php');
+            if(strtotime(date('Y-m-d'))< strtotime(LASTDATE))
+            {
+                $this->load->view('Rechecking/getInfo.php');    
+            }
             $this->load->view('Rechecking/Footer.php'); 
             return;
         }
