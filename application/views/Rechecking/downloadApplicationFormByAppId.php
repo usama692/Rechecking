@@ -61,7 +61,7 @@ if(SESS == 1){ @$sess = 'Annual';}else if(SESS == 2){ @$sess = 'Supply';}
 if(strtotime(date("d-m-Y")) > strtotime(LASTDATE)) 
 {
     ?>
-    <div class="alert alert-danger fade in alert-dismissable">
+    <div class="alert alert-info fade in alert-dismissable">
         <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close"></a>
         <strong>View your rechecking application status</strong>
     </div>
@@ -88,7 +88,7 @@ if(strtotime(date("d-m-Y")) <= strtotime(LASTDATE))
                 <option value='0' selected="selected">NONE</option>
                 <option value='9' <?php if(@$_POST['stClass'] == 9) echo 'selected' ?>>9th</option>
                 <option value='10' <?php if(@$_POST['stClass'] == 10) echo 'selected' ?>>10th</option>
-                <!--<option value='11' <?php if(@$_POST['stClass'] == 11) echo 'selected' ?>>11th</option>-->
+                <option value='11' <?php if(@$_POST['stClass'] == 11) echo 'selected' ?>>11th</option>
                 <option value='12' <?php if(@$_POST['stClass'] == 12) echo 'selected' ?>>12th</option>
             </select>
             <label for="appId">Application ID / Roll No:</label>
@@ -188,7 +188,7 @@ if(@$data != false)
     @$case = "";
     switch ($status) {
         case 1:
-            $message = "Your application is UNDER PROCESS";
+            $message = "Your application is UNDER PROCESS Fee Not Verified Yet";
             $case = 1;
             break;
         case 2:
@@ -241,7 +241,7 @@ if(@$data != false)
                 ?>
                 <div class="alert alert-warning">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close"></a>
-                    <strong><?php echo $message ?></strong>
+                    <strong><?php echo strtoupper($message) ?></strong>
                 </div>
                 <?php
             }
@@ -249,7 +249,7 @@ if(@$data != false)
                 ?>
                 <div class="alert alert-info">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close"></a>
-                    <strong><?php echo $message ?></strong>
+                    <strong><?php echo strtoupper($message) ?></strong>
                 </div>
                 <?php
             }
@@ -257,7 +257,7 @@ if(@$data != false)
                 ?>
                 <div class="alert alert-success">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close"></a>
-                    <strong><?php echo $message ?></strong>
+                    <strong><?php echo strtoupper($message) ?></strong>
                 </div>
                 <?php
             }
@@ -265,7 +265,7 @@ if(@$data != false)
                 ?>
                 <div class="alert alert-danger">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close"></a>
-                    <strong><?php echo $message ?></strong>
+                    <strong><?php echo strtoupper($message) ?></strong>
                 </div>
                 <?php
             }

@@ -1,7 +1,6 @@
 <?php
 $now    = new DateTime();
-$future = new DateTime("2017-08-19 11:30:00");
-
+$future = new DateTime("2017-09-10 11:30:00");
 if($now >= $future)
 {
     ?>    
@@ -58,7 +57,6 @@ if($now >= $future)
         </div>
         <div class="form-group">
             <label for="bName">Bank Name:</label>
-
             <select id="bName" name="bName" required  class="form-control">
                 <option value = '0'>NONE</option>
                 <optgroup label='GUJRANWALA'>
@@ -166,23 +164,19 @@ if($now >= $future)
                 </optgroup>
             </select>
         </div>
-
         <div class="pull-right"  id="instruction">
             <img src="<?php echo base_url(); ?>assets/img/instructions.jpg" width="800px" class="img-responsive" alt="instructions.jpg">
         </div>
-
         <div class="form-group">
             <label for="paidDate">Paid Date:</label>
             <input type="text" class="form-control" id="paidDate" name="paidDate" value="<?php echo @$error['data']['paidDate'] ?>">
         </div>
-
         <div class="form-group">
             <label for="amount">Amount:</label>
             <input type="text" class="form-control" id="amount" name="amount" value="<?php echo @$error['data']['amount'] ?>" placeholder="Enter Amount paid in bank">
         </div>
         <?php
         if(CLS == 11 || CLS == 12){
-
             ?>
             <hr class="colorgraph">
             <h4 class="bold">Exam Information</h4>
@@ -190,36 +184,28 @@ if($now >= $future)
                 <label for="matRno">Matric Roll No:</label>
                 <input type="text" class="form-control" id="matRno" name="matRno" value="<?php echo @$error['data']['matRno'] ?>">
             </div>
-
             <div class="form-group">
                 <label for="interRno">Inter Roll No:</label>
                 <input type="text" class="form-control" id="interRno" name="interRno" value="<?php echo @$error['data']['interRno'] ?>">
             </div>
-
             <?php
         }
         else if(CLS == 9 || CLS == 10){
-
             ?>
             <hr class="colorgraph">
-
             <h4 class="bold">Exam Information</h4>
-
             <div class="form-group">
                 <label for="matRno">Matric <?php echo '('.CLS.'TH)' ?>  Roll No:</label>
                 <input type="text" class="form-control" id="matRno" name="matRno" value="<?php echo @$error['data']['matRno'] ?>">
             </div>
-
             <div class="form-group">
                 <label for="dob">Date of Birth:</label>
                 <input type="text" class="form-control" id="dob" name="dob" value="<?php echo @$error['data']['dob'] ?>">
             </div>
-
             <?php
         }
         ?>
         <input type="hidden" id="class" name="class" value="<?php echo CLS ?>"> 
-
         <div class="row">
             <div class="col-md-6">
                 <input type="submit" value="Proceed to Next Step" id="proceed" name="proceed" class="btn btn-primary btn-block" onclick="return checksGetInfo()">
@@ -229,9 +215,7 @@ if($now >= $future)
             </div>
         </div>
     </form>
-
     <script type="text/javascript">
-
         jQuery(document).ready(function() 
             {  
                 $.fancybox("#instruction");
