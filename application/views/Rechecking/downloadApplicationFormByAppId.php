@@ -188,7 +188,7 @@ if(@$data != false)
     @$case = "";
     switch ($status) {
         case 1:
-            $message = "Your application is UNDER PROCESS Fee Not Verified Yet";
+            $message = "Your application is UNDER PROCESS";
             $case = 1;
             break;
         case 2:
