@@ -73,7 +73,7 @@ class Rechecking_Model extends CI_Model
 
         if(CLS == 9 || CLS == 10)                                     
         {
-            $query = $this->db->query("exec OnlineOpr..spFetchRecordForRechecking $cls, $year, $sess, $matRno, '".$dob."' ");    
+            $query = $this->db->query("exec OnlineOpr..spFetchRecordForRechecking $cls, $year, $sess, '$matRno', '".$dob."' ");    
             if(!$query)
             {
                 return -1;
