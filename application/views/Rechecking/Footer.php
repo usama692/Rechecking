@@ -351,7 +351,7 @@
                 cache:false,
 
                 success: function(data)
-                {
+                {                    
                     var obj = JSON.parse (data);
                     if(obj.excep == 'Success')
                     {
@@ -366,6 +366,7 @@
                             cache:false,
 
                             success: function(data){
+
                                 var obj = JSON.parse(data) ;
                                 if(obj.error ==  1)
                                 {

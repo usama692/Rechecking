@@ -132,8 +132,8 @@
     </style>
 
 </head>
-<!--<body oncontextmenu="return false">-->
-<body>
+<body oncontextmenu="return false">
+<!--<body>-->
 <div class="mPageloader">
     <div class="CSSspinner2 large">
         <div class="spinner-container container1">
@@ -159,18 +159,12 @@
 
 <div class="container">
 <div class="row-fluid">
-    <h2 style="background:#003a6a !important; color: wheat; text-align: center;" class="jumbotron">
-        <img src="<?php echo base_url(); ?>assets/img/BISEGRW_Icon.png" class="img-circle" width="125px" height="125px" alt="Logo">
+    <h3 style="background:#003a6a !important; color: wheat; text-align: center; height: 140px;" class="jumbotron">
+        <img src="<?php echo base_url(); ?>assets/img/BISEGRW_Icon.png" class="rounded float-left" width="50px" height="50px" alt="Logo">
         Board of Intermediate & Secondary Education, Gujranwala
         <br>
         <?php 
-        $sess = '';
-        if(SESS == '1')
-            $sess =  'Annual';
-        else if(SESS == '2')
-            $sess = 'Supply';
-            //echo  '<p style="text-align:center;">Online Rechecking for '.SESSNAME.' '.'('.CLS.'th) ' .$sess.' '. YEAR.' </p>';   
-            echo'<p style="text-align:center;">ONLINE RECHECKING </p>';
+        echo'<p style="text-align:center;">ONLINE RECHECKING </p>';
         ?>
-    </h2>
+    </h3>
 </div>

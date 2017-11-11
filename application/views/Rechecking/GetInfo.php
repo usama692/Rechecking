@@ -41,7 +41,7 @@ if($now >= $future)
         <?php
         @$mysg = @$error['error_msg'];
         if(@$mysg != "")
-        {
+        {               
             ?>
             <div class="alert alert-danger fade in alert-dismissable">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
@@ -163,10 +163,10 @@ if($now >= $future)
                     <option value='GOHAD PUR CHOWK BR - 492' <?php if(@$error['data']['bName']=='GOHAD PUR CHOWK BR - 492'){echo " selected";} ?>>GOHAD PUR CHOWK BR</option>
                 </optgroup>
             </select>
-        </div>
+        </div>      
         <div class="pull-right"  id="instruction">
             <img src="<?php echo base_url(); ?>assets/img/instructions.jpg" width="800px" class="img-responsive" alt="instructions.jpg">
-        </div>
+        </div>   
         <div class="form-group">
             <label for="paidDate">Paid Date:</label>
             <input type="text" class="form-control" id="paidDate" name="paidDate" value="<?php echo @$error['data']['paidDate'] ?>">
@@ -214,13 +214,13 @@ if($now >= $future)
                 <input type="button" value="Cancel" id="cancel" name="cancel" class="btn btn-danger btn-block" onclick="return CancelAlert();">
             </div>
         </div>
-    </form>
+    </form>    
     <script type="text/javascript">
         jQuery(document).ready(function() 
             {  
                 $.fancybox("#instruction");
         });
     </script>
-    <?php
+    <?php 
 }    
 ?>

@@ -3,7 +3,6 @@
 
 define('CLS', 10);
 define('YEAR', '2017');
-define('SESS', 2);
+define('SESS', 1);
 define('SESSNAME', 'SSC');
-define('LASTDATE', '31-12-2017');
-
+define('LASTDATE', '27-12-2017');
